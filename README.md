@@ -69,10 +69,12 @@ Note: Also keep in mind that the linux kernel used by android is currently not m
 
 The init application is actually quite simple if you think about it, what it does is it loads all the *.rc files and attempt to start services and execute commands that are defined in those files. The source code for init can be found in system/core/init in the aosp sources. The init process can be thought of as having 3 primary goals:
 
-1.) Prepare the filesystem (permissions, setup directores etc.)
-2.) Start the android core services and proprietary manufacturer daemons (gps, cellular etc.)
-3.) Start the android appliation framework and load the System UI
+1. Prepare the filesystem (permissions, setup directores etc.)
+2. Start the android core services and proprietary manufacturer daemons (gps, cellular etc.)
+3. Start the android appliation framework and load the System UI
 
-Note that if a problem happens during the startup sequence you can get a bootloop or your boot animation just hangs. In the succeeding chapters we will go over those services one by one and see how they impact custom ROM porting. Some of the services just works across all devices while some need tweaks for it to work.
+Note: If a problem happens during the startup sequence you can get a bootloop or your boot animation just hangs. In the succeeding chapters we will go over those services one by one and see how they impact custom ROM porting. Some of the services just works across all devices while some need tweaks for it to work.
+
+Note: SELinux - On newer android releases, selinux gets initialized somewhere between the linux startup and before init gets called. Selinux is a security enhancement (initially developed by the NSA I believe) that works on top of the standard linux permissions and allows you to define allowed operations on a resource on a per app/service basis. Literature on how this works on android is depressingly lacking and I will tackle this on a separate section.
 
 
