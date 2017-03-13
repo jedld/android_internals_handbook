@@ -44,11 +44,17 @@ Next would be the chipset. The chipset is basically the motherboard where your c
 You can extract most of this information from build.prop, if the kernel source code of your device is available, you can look at the kernels defconfig file.
 
 Detailed overview of the android bootup process
-===============================================
+-----------------------------------------------
 
 How exactly does your phone go from off to your homescreen? Seems so simple but there is actually a lot of things going on. In fact there is so many things going on that a vast majority of Cyanogenmod and custom ROM porters spend a majority of their time getting this work right on their supported devices. Note that there are slight variations between different hardware depending on how manufacturers tweak it, but most of the concept is the same.
 
-1. Hardware initalization and startup - Device turns on and your devices firmware starts its bootup sequence (Note that firmware refers to the actual firmware and not the android related code). What happens here is device specific, but after it does it's thing it usually loads code in the boot partition. 
+1. Hardware Initialization and startup
+2. The init process
+
+Hardware initialization and startup
+==================================
+
+When you turn your device on and your devices firmware starts its bootup sequence (Note that firmware refers to the actual manufacturer firmware and not the android related code). What happens here is device specific, on nexus devices this is sometimes called the fastboot sequence. But after it does it's thing, it usually loads code in the boot partition. The boot partition is not a normal partition that you can mount, it is actually composed of two files, a compressed linux kernel and the ramdisk. 
 
 
 
