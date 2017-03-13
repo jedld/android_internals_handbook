@@ -44,7 +44,7 @@ Next would be the chipset. The chipset is basically the motherboard where your c
 You can extract most of this information from build.prop, if the kernel source code of your device is available, you can look at the kernels defconfig file.
 
 Detailed overview of the android bootup process
------------------------------------------------
+===============================================
 
 How exactly does your phone go from off to your homescreen? Seems so simple but there is actually a lot of things going on. In fact there is so many things going on that a vast majority of Cyanogenmod and custom ROM porters spend a majority of their time getting this work right on their supported devices. Note that there are slight variations between different hardware depending on how manufacturers tweak it, but most of the concept is the same.
 
@@ -52,7 +52,7 @@ How exactly does your phone go from off to your homescreen? Seems so simple but 
 2. The init process
 
 Hardware initialization and startup
-==================================
+-----------------------------------
 
 When you turn your device on and your devices firmware starts its bootup sequence via a bootloader (Note that firmware refers to the actual manufacturer firmware and not the android related code). What happens here is device specific, on nexus devices this is sometimes called the fastboot sequence. But after it does it's thing, it usually loads code in the boot partition. The boot partition is not a normal partition that you can mount, it is actually composed of two files, a compressed linux kernel and the ramdisk. The ramdisk is a compressed set of files that will form the root filesystem of your device. Note that since the content of the root filesystem is unzipped in ram and mounted as a ramdisk, you can't technically change its content, in order to change it you need to unzip the ramdisk files and then zip it again and reflash the boot partition. When a mod in xda requires changes to the kernel and files in the bootloader, they all have to go through this process somehow.
 
@@ -60,6 +60,19 @@ The aosp tools mkbootimg are used to build the boot.img and recovery.img in most
 
 Do note that the recovery partition has exactly the same format as the boot partition with both having the kernel and ramdisk files. The only difference is in the way servcies are started. In fact, the recovery image actually has almost the same copy of the kernel that the boot partition has and in some cases they are the same, the only difference is that the recovery partition only boots the recovery program e.g. CM Recovery, TWRP, ClockworkMod etc. Since the recovery partition has a simpler startup process than the boot partition most custom ROM porters usually start making custom recovery work first.
 
+The init process
+----------------
 
+After the bootloader loads the linux kernel and ramdisk into memory. Two things happen, the linux startup sequence gets called and then the init app gets called (yes init is an app at /init). If your device bootloops or freezes without even emitting a single line of logcat, then any of these two might be the culprit. Please note that the init used by android is nowhere related to the init.d daemon used by other linux distributions, it is a completely new thing developed by google specifically for use with android. There may be some custom ROMs that attempt to port over init.d but this is beyond the scope of this document. 
+
+Note: Also keep in mind that the linux kernel used by android is currently not mainline, meaning it has modifications that you would not otherwise find on your vanilla linux distribution, there have been attempts to "upstream" this, though I'm not sure what has happened to it at this point in time.
+
+The init application is actually quite simple if you think about it, what it does is it loads all the *.rc files and attempt to start services and execute commands that are defined in those files. The source code for init can be found in system/core/init in the aosp sources. The init process can be thought of as having 3 primary goals:
+
+1.) Prepare the filesystem (permissions, setup directores etc.)
+2.) Start the android core services and proprietary manufacturer daemons (gps, cellular etc.)
+3.) Start the android appliation framework and load the System UI
+
+Note that if a problem happens during the startup sequence you can get a bootloop or your boot animation just hangs. In the succeeding chapters we will go over those services one by one and see how they impact custom ROM porting. Some of the services just works across all devices while some need tweaks for it to work.
 
 
