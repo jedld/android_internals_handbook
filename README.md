@@ -12,13 +12,16 @@ Note that this is based on my experience on porting cyanogenmod to the Samsung G
 
 I have arranged the contents of this guide, according to the appropriate order required for you to be able to root up to building your first custom ROM. I went into this knowing nothing so I am confident even those with no experience with porting Android to be able to do this.
 
-Most of my experience may be unique to Samsung and the Spreadtrum chipset, though I have deveoped and compiled code for the Nexus series and the OnePlus 3T, I will try to call out if it something manufacturer specific.
+Most of my experience may be unique to Samsung and the Spreadtrum chipset, though I have deveoped and compiled code for the Nexus series and the OnePlus 3T, I will try to call out if it something manufacturer specific. As to the specific android version, I only have experience with android 5.1 - 6.0 and 7.1 based ROMs, but I will try to callout changes introduced if I am aware of it.
 
-Table of Contents
------------------
+# Versions
 
-I. Getting to know your device
-II. Flashing your device
-  a. Samsung
-  b. Nexus Device
-  c. Others
+1.0 - Initial Version
+
+# Table of contents
+1. [Introduction](#introduction)
+2. [Getting to know your device](#getting to know your device)
+3. [Detailed overview of the android bootup process](#bootup)
+4. [Flashing your device](#flashing)
+  1. [Samsung](#samsung_flash)
+  2. [Nexuses](#nexus_flash)
