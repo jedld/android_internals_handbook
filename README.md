@@ -56,6 +56,10 @@ Hardware initialization and startup
 
 When you turn your device on and your devices firmware starts its bootup sequence via a bootloader (Note that firmware refers to the actual manufacturer firmware and not the android related code). What happens here is device specific, on nexus devices this is sometimes called the fastboot sequence. But after it does it's thing, it usually loads code in the boot partition. The boot partition is not a normal partition that you can mount, it is actually composed of two files, a compressed linux kernel and the ramdisk. The ramdisk is a compressed set of files that will form the root filesystem of your device. Note that since the content of the root filesystem is unzipped in ram and mounted as a ramdisk, you can't technically change its content, in order to change it you need to unzip the ramdisk files and then zip it again and reflash the boot partition. When a mod in xda requires changes to the kernel and files in the bootloader, they all have to go through this process somehow.
 
+The aosp tools mkbootimg are used to build the boot.img and recovery.img in most AOSP based ROMs, though there are certain devices that have their own boot.img formats **cough** samsung.
+
+Do note that the recovery partition has exactly the same format as the boot partition with both having the kernel and ramdisk files. The only difference is in the way servcies are started. In fact, the recovery image actually has almost the same copy of the kernel that the boot partition has and in some cases they are the same, the only difference is that the recovery partition only boots the recovery program e.g. CM Recovery, TWRP, ClockworkMod etc. Since the recovery partition has a simpler startup process than the boot partition most custom ROM porters usually start making custom recovery work first.
+
 
 
 
