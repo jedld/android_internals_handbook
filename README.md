@@ -42,3 +42,14 @@ Ideally, you can get this from your devices specsheet, there are only two archit
 Next would be the chipset. The chipset is basically the motherboard where your cpu is soldered on and contains other hardware chips like the accelerometer, modem, wifi and camera chips for example. The chipset may not even refer to the motherboard at all as we now have System on a chip solutions which combines all other hardware features into one chip. Examples of chipsets are the sc9830 from spreadtrum, Qualcomm MSM8996.
 
 You can extract most of this information from build.prop, if the kernel source code of your device is available, you can look at the kernels defconfig file.
+
+Detailed overview of the android bootup process
+===============================================
+
+How exactly does your phone go from off to your homescreen? Seems so simple but there is actually a lot of things going on. In fact there is so many things going on that a vast majority of Cyanogenmod and custom ROM porters spend a majority of their time getting this work right on their supported devices. Note that there are slight variations between different hardware depending on how manufacturers tweak it, but most of the concept is the same.
+
+1. Hardware initalization and startup - Device turns on and your devices firmware starts its bootup sequence (Note that firmware refers to the actual firmware and not the android related code). What happens here is device specific, but after it does it's thing it usually loads code in the boot partition. 
+
+
+
+
