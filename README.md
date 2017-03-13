@@ -75,6 +75,6 @@ The init application is actually quite simple if you think about it, what it doe
 
 Note: If a problem happens during the startup sequence you can get a bootloop or your boot animation just hangs. In the succeeding chapters we will go over those services one by one and see how they impact custom ROM porting. Some of the services just works across all devices while some need tweaks for it to work.
 
-Note: SELinux - On newer android releases, selinux gets initialized somewhere between the linux startup and before init gets called. Selinux is a security enhancement (initially developed by the NSA I believe) that works on top of the standard linux permissions and allows you to define allowed operations on a resource on a per app/service basis. Literature on how this works on android is depressingly lacking and I will tackle this on a separate section.
+Note: SELinux - On newer android releases, selinux gets initialized somewhere between the linux startup and before init gets called. Selinux is a security enhancement (initially developed by the NSA I believe) that works on top of the standard linux permissions and allows you to define allowed operations on a resource on a per app/service basis. Literature on how this works on android is depressingly lacking and I will tackle this on a separate section. When you are just starting to port over a ROM you usually need to disable SELinx first as it will prevent incorrectly configured services from working properly since it will reject access to resources a service does not have access to.
 
 
