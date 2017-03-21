@@ -93,7 +93,7 @@ Core System Services Guide
 
 There may be other important manufacturer specific services, but the android part is described below, you should see one or all of this being started by the init process:
 
-rild - daemon that interfaces with the manufacturer specific radio hardware
-vold - daemon that handles mounting of storage devices
-zygote - aka app_process32/64 - The android runtime, that gets forked per app process. This usually runs last. You're custom ROM is usually good to go if it reaches this part.
-bootanimation - A service that gets started to display the boot animation. If this works in your custom ROM you at least got the most important parts of the display framework working.
+* rild - daemon that interfaces with the manufacturer specific radio hardware
+* vold - daemon that handles mounting of storage devices
+* zygote - aka app_process32/64 - The android runtime, that gets forked per app process. This usually runs last. You're custom ROM is usually good to go if it reaches this part.
+* bootanimation - A service that gets started to display the boot animation. If this works in your custom ROM you at least got the most important parts of the display framework working.
