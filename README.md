@@ -87,3 +87,13 @@ Overview of the *.rc files
 A working knowledge of the *.rc files is required if you are into porting ROMs, unfortunately unless you are into reading source code, literature on how .rc work is sorely lacking. Though I will provide a gist of how they work. As the rc files are in the root filesystem (the ramdisk), modifying this requires a reflash of the boot partition. Note that Android Nougat has made some small changes on how these files are organized though the working mechanism still stays the same.
 
 In a nutshell the init.rc file is the first file that gets loaded and parsed. Note that at this stage the init.rc file and its included files are simply loaded and parsed in memory before execution. The init.rc files and its included files define scripts that are executed based on hooks that are triggered by various system events. The system events can be thought of as various states that the system is currently in the boot process. Once certain criteria is met, the boot process moves on to the next state and starts up services and executes commands that are defined in the that state and so on until it reaches the last state. The init script allows for various simple shell-like commands like copy, move, softlink, chmod etc., however do note that these do not actually call out to a shell command and is implemented inline by the init process itself. You will also notice some commands that deal with the property service like setprop and getprop, these "properties" are used extensively by various system services as well as the android framework itself, in fact if you follow some xda mods you will notice that a lot of them deal with modifying these properties either through build.prop or the command line equivalent setprop.
+
+Core System Services Guide
+==========================
+
+There may be other important manufacturer specific services, but the android part is described below, you should see one or all of this being started by the init process:
+
+rild - daemon that interfaces with the manufacturer specific radio hardware
+vold - daemon that handles mounting of storage devices
+zygote - aka app_process32/64 - The android runtime, that gets forked per app process. This usually runs last. You're custom ROM is usually good to go if it reaches this part.
+bootanimation - A service that gets started to display the boot animation. If this works in your custom ROM you at least got the most important parts of the display framework working.
