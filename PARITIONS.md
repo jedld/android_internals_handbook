@@ -11,9 +11,9 @@ devices. The external storage is a different matter as you can use standard tool
 
 A typical android device mostly contains the following *standard* partitions:
 
-BOOT - Contains the linux kernel and ramdisk, as well as the the init files and selinux policies
-RECOVERY - Like the boot partition it also contains a copy of the kernel and the recovery ramdisk. This is equivalent to some sort of "safe mode".
-SYSTEM - A readonly partition. Contains the manufacturer and android system executables, shipped applications and platform libraries as well as various media assets.
-DATA - A read/write partition. This is where your persistent user data is stored as well as downloaded and installed apps and their data.
-CACHE - A scratchpad partition used by some apps. 
-EFS - A read/write partition used by some hardware services.
+* BOOT - Contains the linux kernel and ramdisk, as well as the the init files and selinux policies
+* RECOVERY - Like the boot partition it also contains a copy of the kernel and the recovery ramdisk. This is equivalent to some sort of "safe mode".
+* SYSTEM - A readonly partition. Contains the manufacturer and android system executables, shipped applications and platform libraries as well as various media assets.
+* DATA - A read/write partition. This is where your persistent user data is stored as well as downloaded and installed apps and their data.
+* CACHE - A scratchpad partition used by some apps. 
+* EFS - A read/write partition used by some hardware services.
