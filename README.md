@@ -28,6 +28,10 @@ Most of my experience may be unique to Samsung and the Spreadtrum chipset, thoug
 4. [Flashing your device](#flashing)
   1. [Samsung](#samsung_flash)
   2. [Nexuses](#nexus_flash)
+  
+## Before you start
+
+Make sure you also read [Tools of the trade](https://github.com/jedld/android_internals_handbook/blob/master/TOOLS.md)
 
 ## Getting to know your device
 
