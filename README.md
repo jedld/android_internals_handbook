@@ -97,3 +97,4 @@ There may be other important manufacturer specific services, but the android par
 * vold - daemon that handles mounting of storage devices
 * zygote - aka app_process32/64 - The android runtime, that gets forked per app process. This usually runs last. You're custom ROM is usually good to go if it reaches this part.
 * bootanimation - A service that gets started to display the boot animation. If this works in your custom ROM you at least got the most important parts of the display framework working.
+* surfaceflinger - A service that handles sending of buffers to a virtual or physical display. These can be opengl buffers or software buffers.
