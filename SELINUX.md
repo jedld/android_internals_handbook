@@ -1,12 +1,12 @@
 SELINUX IN ANDROID (AND HOW IT WORKS WITH BUILDING A CUSTOM ROM)
-----------------------------------------------------------------
+================================================================
 
 Selinux or security enhanced linux was introduced in android 4.4 but fully implemented (and required) in Android 5.0+.
 Selinux is a required feature in your kernel. Even if you just plan to use a permissive kernel, binaries depend
 on it existing even if you don't plan to use it.
 
 INTRODUCTION
-============
+------------
 
 Selinux defines permissions on system resources like files and sockets as well as abilities (e.g. execute) on a 
 per process level using selinux labels. A list of permissions allowed is defined in an selinux
@@ -24,11 +24,11 @@ you provide for your device. In theory the only policies you need to define are 
 dealing with drivers and manufacturer specific binaries.
 
 Building SEPOLICY notes
-=======================
+-----------------------
 
 When first building your kernel, it is best to start with a permissive one, so that it is easier to diagnose boot issues. When you are sure that your device works, you can then start to fix selinux errors one by one. For most kernels you can set the kernel boot selinux parameters. If you have access to the kernel source, you can also set it there. For some samsung kernels, there is a flag that force enables SELINUX to enforcing, so you may need to change that during kernel compilation.
 
 COMPILING SEPOLICY FILES
-========================
+------------------------
 
 The sepolicy files is part of the main build process. But you can build them separately, in your LOS/aosp work environment you can go to ~/android-work/system/sepolicy and execute mm
