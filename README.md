@@ -45,7 +45,7 @@ Ideally, you can get this from your devices specsheet, there are only two archit
 
 Next would be the chipset. The chipset is basically the motherboard where your cpu is soldered on and contains other hardware chips like the accelerometer, modem, wifi and camera chips for example. The chipset may not even refer to the motherboard at all as we now have System on a chip solutions which combines all other hardware features into one chip. Examples of chipsets are the sc9830 from spreadtrum, Qualcomm MSM8996.
 
-You can extract most of this information from build.prop, if the kernel source code of your device is available, you can look at the kernels defconfig file.
+You can extract most of this information from build.prop, if the kernel source code of your device is available (if it is not, you can demand your manufacturer to give it to you due to the GPL), you can look at the kernels defconfig file.
 
 Detailed overview of the android bootup process
 ===============================================
